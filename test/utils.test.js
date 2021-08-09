@@ -357,7 +357,7 @@ describe('utils.getMemoryInfo()', () => {
         }
     });
 
-    test.only('works with cgroup V2 with UNLIMITED memory', async () => {
+    test('works with cgroup V2 with UNLIMITED memory', async () => {
         const utilsMock = sinon.mock(utils);
         const osMock = sinon.mock(os);
 
