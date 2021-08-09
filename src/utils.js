@@ -281,12 +281,13 @@ export const getMemoryInfo = async () => {
         // When running inside Docker container, use container memory limits
         // This must be promisified here so that we can mock it.
         const readPromised = util.promisify(fs.readFile);
+        const accessPromised = util.promisify(fs.access);
 
         // Check wheter cgroups V1 or V2 is used
         let cgroupsVersion = 'V1';
         try {
             // If this directory does not exists, assume docker is using cgroups V2
-            await fs.promises.access('/sys/fs/cgroup/memory/', fs.constants.R_OK);
+            await accessPromised('/sys/fs/cgroup/memory/', fs.constants.R_OK);
         } catch (err) {
             cgroupsVersion = 'V2';
         }
