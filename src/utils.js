@@ -306,7 +306,7 @@ export const getMemoryInfo = async () => {
             // See https://git.kernel.org/pub/scm/linux/kernel/git/tj/cgroup.git/tree/Documentation/admin-guide/cgroup-v2.rst (see "memory.max")
             if (totalBytesStr === 'max') {
                 totalBytes = os.totalmem();
-            // Cgroups V1 is set to number related to platform and page size
+            // Cgroups V1 is set to number related to platform and page size if memory is not limited
             // See https://unix.stackexchange.com/q/420906
             } else {
                 totalBytes = parseInt(totalBytesStr, 10);
