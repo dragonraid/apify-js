@@ -222,7 +222,7 @@ describe('utils.getMemoryInfo()', () => {
 
         sinon
             .stub(fs, 'readFile')
-            .callsFake((filePath, callback) => {
+            .callsFake((filePath, encoding, callback) => {
                 if (filePath === '/sys/fs/cgroup/memory/memory.limit_in_bytes') callback(null, '333');
                 else if (filePath === '/sys/fs/cgroup/memory/memory.usage_in_bytes') callback(null, '111');
                 else throw new Error('Invalid path');
